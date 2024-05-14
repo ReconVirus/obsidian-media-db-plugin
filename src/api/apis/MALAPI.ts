@@ -108,7 +108,7 @@ export class MALAPI extends APIModel {
 				url: result.url,
 				id: result.mal_id,
 
-				plot: result.synopsis,
+				plot: result.synopsis ? result.synopsis.replace('[Written by MAL Rewrite]', '').trim() : '',
 				genres: result.genres?.map((x: any) => x.name) ?? [],
 				director: [],
 				writer: [],
@@ -174,7 +174,7 @@ export class MALAPI extends APIModel {
 				url: result.url,
 				id: result.mal_id,
 
-				plot: result.synopsis,
+				plot: result.synopsis ? result.synopsis.replace('[Written by MAL Rewrite]', '').trim() : '',
 				genres: result.genres?.map((x: any) => x.name) ?? [],
 				writer: [],
 				studio: result.studios?.map((x: any) => x.name) ?? [],
