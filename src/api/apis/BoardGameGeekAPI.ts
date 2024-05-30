@@ -18,6 +18,11 @@ export class BoardGameGeekAPI extends APIModel {
 		this.types = [MediaType.BoardGame];
 	}
 
+	processImageLink(boardgameElement: { querySelector: (arg0: string) => { (): any; new (): any; textContent: any } }) {
+		const imageContent = boardgameElement.querySelector('image')?.textContent;
+		return this.plugin.settings.generateEmbedLinksForImages && imageContent ? `![](${imageContent})` : imageContent ?? undefined;
+	}
+
 	async searchByTitle(title: string): Promise<MediaTypeModel[]> {
 		console.log(`MDB | api "${this.apiName}" queried by Title`);
 
@@ -75,9 +80,7 @@ export class BoardGameGeekAPI extends APIModel {
 		const boardgame = response.querySelector('boardgame')!;
 		const title = boardgame.querySelector('name[primary=true]')!.textContent!;
 		const year = boardgame.querySelector('yearpublished')?.textContent ?? '';
-		const image = this.plugin.settings.embedPosters
-			? `![](${boardgame.querySelector('image')?.textContent ?? undefined})`
-			: boardgame.querySelector('image')?.textContent ?? undefined;
+		const image = this.processImageLink(boardgame);
 		const onlineRating = Number.parseFloat(boardgame.querySelector('statistics ratings average')?.textContent ?? '0');
 		const genres = Array.from(boardgame.querySelectorAll('boardgamecategory')).map(n => n!.textContent!);
 		const complexityRating = Number.parseFloat(boardgame.querySelector('averageweight')?.textContent ?? '0');

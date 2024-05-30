@@ -51,7 +51,7 @@ export class MusicBrainzAPI extends APIModel {
 					dataSource: this.apiName,
 					url: 'https://musicbrainz.org/release-group/' + result.id,
 					id: result.id,
-					image: this.plugin.settings.embedPosters
+					image: this.plugin.settings.generateEmbedLinksForImages
 						? `![](${'https://coverartarchive.org/release-group/' + result.id + '/front'})`
 						: 'https://coverartarchive.org/release-group/' + result.id + '/front',
 
@@ -91,7 +91,7 @@ export class MusicBrainzAPI extends APIModel {
 			dataSource: this.apiName,
 			url: 'https://musicbrainz.org/release-group/' + result.id,
 			id: result.id,
-			image: this.plugin.settings.embedPosters
+			image: this.plugin.settings.generateEmbedLinksForImages
 				? `![](${'https://coverartarchive.org/release-group/' + result.id + '/front'})`
 				: 'https://coverartarchive.org/release-group/' + result.id + '/front',
 

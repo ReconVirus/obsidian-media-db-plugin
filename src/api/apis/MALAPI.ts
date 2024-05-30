@@ -116,7 +116,7 @@ export class MALAPI extends APIModel {
 				duration: result.duration ?? 'unknown',
 				onlineRating: result.score ?? 0,
 				actors: [],
-				image: this.plugin.settings.embedPosters ? `![](${result.images?.jpg?.image_url})` ?? '' : result.images?.jpg?.image_url ?? '',
+				image: this.plugin.settings.generateEmbedLinksForImages ? `![](${result.images?.jpg?.image_url})` ?? '' : result.images?.jpg?.image_url ?? '',
 
 				released: true,
 				premiere: this.plugin.dateFormatter.format(result.aired?.from, this.apiDateFormat) ?? 'unknown',
@@ -150,7 +150,7 @@ export class MALAPI extends APIModel {
 				duration: result.duration ?? 'unknown',
 				onlineRating: result.score ?? 0,
 				actors: [],
-				image: this.plugin.settings.embedPosters ? `![](${result.images?.jpg?.image_url})` ?? '' : result.images?.jpg?.image_url ?? '',
+				image: this.plugin.settings.generateEmbedLinksForImages ? `![](${result.images?.jpg?.image_url})` ?? '' : result.images?.jpg?.image_url ?? '',
 
 				released: true,
 				premiere: this.plugin.dateFormatter.format(result.aired?.from, this.apiDateFormat) ?? 'unknown',
@@ -182,7 +182,7 @@ export class MALAPI extends APIModel {
 				duration: result.duration ?? 'unknown',
 				onlineRating: result.score ?? 0,
 				streamingServices: result.streaming?.map((x: any) => x.name) ?? [],
-				image: this.plugin.settings.embedPosters ? `![](${result.images?.jpg?.image_url})` ?? '' : result.images?.jpg?.image_url ?? '',
+				image: this.plugin.settings.generateEmbedLinksForImages ? `![](${result.images?.jpg?.image_url})` ?? '' : result.images?.jpg?.image_url ?? '',
 
 				released: true,
 				airedFrom: this.plugin.dateFormatter.format(result.aired?.from, this.apiDateFormat) ?? 'unknown',
